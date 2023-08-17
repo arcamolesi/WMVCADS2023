@@ -7,5 +7,6 @@ namespace WMVCADS2023.Models
         public Contexto(DbContextOptions<Contexto> options): base(options) { }
 
         public DbSet<Curso> Cursos { get; set; }
+        public DbSet<Sala> Salas { get; set; }
     }
 }

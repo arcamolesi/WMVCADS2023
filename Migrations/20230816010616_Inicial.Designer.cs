@@ -11,8 +11,8 @@ using WMVCADS2023.Models;
 namespace WMVCADS2023.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20230811145434_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230816010616_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
