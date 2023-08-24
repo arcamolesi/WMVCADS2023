@@ -11,8 +11,8 @@ using WMVCADS2023.Models;
 namespace WMVCADS2023.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20230816010616_Inicial")]
-    partial class Inicial
+    [Migration("20230823013033_inicial")]
+    partial class inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,35 @@ namespace WMVCADS2023.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Cursos");
+                });
+
+            modelBuilder.Entity("WMVCADS2023.Models.Sala", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("descricao")
+                        .IsRequired()
+                        .HasMaxLength(35)
+                        .HasColumnType("nvarchar(35)");
+
+                    b.Property<int>("equipamentos")
+                        .HasColumnType("int");
+
+                    b.Property<string>("monitor")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int>("situacao")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Salas");
                 });
 #pragma warning restore 612, 618
         }

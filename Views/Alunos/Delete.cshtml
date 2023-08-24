@@ -1,4 +1,4 @@
-﻿@model WMVCADS2023.Models.Sala
+﻿@model WMVCADS2023.Models.Aluno
 
 @{
     ViewData["Title"] = "Delete";
@@ -9,32 +9,38 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Sala</h4>
+    <h4>Aluno</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.descricao)
+            @Html.DisplayNameFor(model => model.nome)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.descricao)
+            @Html.DisplayFor(model => model.nome)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.monitor)
+            @Html.DisplayNameFor(model => model.aniversario)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.monitor)
+            @Html.DisplayFor(model => model.aniversario)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.equipamentos)
+            @Html.DisplayNameFor(model => model.email)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.equipamentos)
+            @Html.DisplayFor(model => model.email)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.situacao)
+            @Html.DisplayNameFor(model => model.curso)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.situacao)
+            @Html.DisplayFor(model => model.curso.descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.periodo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.periodo)
         </dd>
     </dl>
     

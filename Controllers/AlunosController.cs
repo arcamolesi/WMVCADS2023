@@ -9,85 +9,90 @@ using WMVCADS2023.Models;
 
 namespace WMVCADS2023.Controllers
 {
-    public class SalasController : Controller
+    public class AlunosController : Controller
     {
         private readonly Contexto _context;
 
-        public SalasController(Contexto context)
+        public AlunosController(Contexto context)
         {
             _context = context;
         }
 
-        // GET: Salas
+        // GET: Alunos
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Salas.ToListAsync());
+            var contexto = _context.Alunos.Include(a => a.curso);
+            return View(await contexto.ToListAsync());
         }
 
-        // GET: Salas/Details/5
+        // GET: Alunos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Salas == null)
+            if (id == null || _context.Alunos == null)
             {
                 return NotFound();
             }
 
-            var sala = await _context.Salas
+            var aluno = await _context.Alunos
+                .Include(a => a.curso)
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (sala == null)
+            if (aluno == null)
             {
                 return NotFound();
             }
 
-            return View(sala);
+            return View(aluno);
         }
 
-        // GET: Salas/Create
+        // GET: Alunos/Create
         public IActionResult Create()
         {
+            ViewData["cursoID"] = new SelectList(_context.Cursos, "id", "descricao");
             return View();
         }
 
-        // POST: Salas/Create
+        // POST: Alunos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,descricao,monitor,equipamentos,situacao")] Sala sala)
+        public async Task<IActionResult> Create([Bind("id,nome,aniversario,email,cursoID,periodo")] Aluno aluno)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(sala);
+                _context.Add(aluno);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(sala);
+            ViewData["cursoID"] = new SelectList(_context.Cursos, "id", "descricao", aluno.cursoID);
+            return View(aluno);
         }
 
-        // GET: Salas/Edit/5
+        // GET: Alunos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Salas == null)
+            if (id == null || _context.Alunos == null)
             {
                 return NotFound();
             }
 
-            var sala = await _context.Salas.FindAsync(id);
-            if (sala == null)
+            var aluno = await _context.Alunos.FindAsync(id);
+            if (aluno == null)
             {
                 return NotFound();
             }
-            return View(sala);
+            ViewData["cursoID"] = new SelectList(_context.Cursos, "id", "descricao", aluno.cursoID);
+            return View(aluno);
         }
 
-        // POST: Salas/Edit/5
+        // POST: Alunos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,descricao,monitor,equipamentos,situacao")] Sala sala)
+        public async Task<IActionResult> Edit(int id, [Bind("id,nome,aniversario,email,cursoID,periodo")] Aluno aluno)
         {
-            if (id != sala.id)
+            if (id != aluno.id)
             {
                 return NotFound();
             }
@@ -96,12 +101,12 @@ namespace WMVCADS2023.Controllers
             {
                 try
                 {
-                    _context.Update(sala);
+                    _context.Update(aluno);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SalaExists(sala.id))
+                    if (!AlunoExists(aluno.id))
                     {
                         return NotFound();
                     }
@@ -112,49 +117,51 @@ namespace WMVCADS2023.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(sala);
+            ViewData["cursoID"] = new SelectList(_context.Cursos, "id", "descricao", aluno.cursoID);
+            return View(aluno);
         }
 
-        // GET: Salas/Delete/5
+        // GET: Alunos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Salas == null)
+            if (id == null || _context.Alunos == null)
             {
                 return NotFound();
             }
 
-            var sala = await _context.Salas
+            var aluno = await _context.Alunos
+                .Include(a => a.curso)
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (sala == null)
+            if (aluno == null)
             {
                 return NotFound();
             }
 
-            return View(sala);
+            return View(aluno);
         }
 
-        // POST: Salas/Delete/5
+        // POST: Alunos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Salas == null)
+            if (_context.Alunos == null)
             {
-                return Problem("Entity set 'Contexto.Salas'  is null.");
+                return Problem("Entity set 'Contexto.Alunos'  is null.");
             }
-            var sala = await _context.Salas.FindAsync(id);
-            if (sala != null)
+            var aluno = await _context.Alunos.FindAsync(id);
+            if (aluno != null)
             {
-                _context.Salas.Remove(sala);
+                _context.Alunos.Remove(aluno);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SalaExists(int id)
+        private bool AlunoExists(int id)
         {
-          return _context.Salas.Any(e => e.id == id);
+          return _context.Alunos.Any(e => e.id == id);
         }
     }
 }

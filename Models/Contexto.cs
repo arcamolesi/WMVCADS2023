@@ -8,5 +8,7 @@ namespace WMVCADS2023.Models
 
         public DbSet<Curso> Cursos { get; set; }
         public DbSet<Sala> Salas { get; set; }
+        public DbSet<Aluno> Alunos { get; set; }
+
     }
 }

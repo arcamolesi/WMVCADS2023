@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WMVCADS2023.Models.Sala>
+﻿@model IEnumerable<WMVCADS2023.Models.Aluno>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,16 +14,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.descricao)
+                @Html.DisplayNameFor(model => model.nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.monitor)
+                @Html.DisplayNameFor(model => model.aniversario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.equipamentos)
+                @Html.DisplayNameFor(model => model.email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.situacao)
+                @Html.DisplayNameFor(model => model.curso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.periodo)
             </th>
             <th></th>
         </tr>
@@ -32,16 +35,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.descricao)
+                @Html.DisplayFor(modelItem => item.nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.monitor)
+                @Html.DisplayFor(modelItem => item.aniversario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.equipamentos)
+                @Html.DisplayFor(modelItem => item.email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.situacao)
+                @Html.DisplayFor(modelItem => item.curso.descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.periodo)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
