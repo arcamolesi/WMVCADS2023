@@ -21,7 +21,8 @@ namespace WMVCADS2023.Controllers
         // GET: Cursos
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Cursos.ToListAsync());
+              return View(await _context.Cursos.ToListAsync()
+                  );
         }
 
         // GET: Cursos/Details/5
