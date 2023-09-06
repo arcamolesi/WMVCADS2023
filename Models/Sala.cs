@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using WMVCADS2023.Migrations;
 
 namespace WMVCADS2023.Models
 {
@@ -30,5 +31,6 @@ namespace WMVCADS2023.Models
         [Required(ErrorMessage = "Campo situação é obrigatório.")]
         [Display(Name = "Situação")]
         public int situacao { get; set; }
+        
     }
 }

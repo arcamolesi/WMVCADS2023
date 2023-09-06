@@ -4,6 +4,7 @@ using WMVCADS2023.Models;
 
 namespace WMVCADS2023.Controllers
 {
+    
     public class LabsController : Controller
     {
         private readonly Contexto _context;
@@ -15,9 +16,12 @@ namespace WMVCADS2023.Controllers
 
 
         public async Task<IActionResult> Index() {
-                return View(await _context.Salas.ToListAsync());
-            
+
+            ViewData["texto"] = "Listar Salas"; 
+
+                return View(await _context.Salas.ToListAsync());  
         }
+
 
     }
 }

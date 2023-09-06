@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.Extensions.WebEncoders.Testing;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WMVCADS2023.Models
 {
     enum Periodo { Diurno, Vespertino, Noturno }
+    
+
 
     [Table("Alunos")]
     public class Aluno
@@ -35,6 +38,11 @@ namespace WMVCADS2023.Models
         [Required(ErrorMessage = "Campo periodo é obrigatório.")]
         [Display(Name = "Período")]
         public int periodo { get; set; }
+
+
+        
+
+       
 
     }
 
