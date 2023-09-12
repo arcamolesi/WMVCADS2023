@@ -4,7 +4,8 @@ using WMVCADS2023.Migrations;
 
 namespace WMVCADS2023.Models
 {
-    enum Situacao { Livre, Ocupado, Reservado, Manutencao, Outras }
+
+    public enum Situacao { Livre, Ocupado, Reservado, Manutencao, Outras }
 
     [Table("Salas")]
     public class Sala
@@ -21,7 +22,7 @@ namespace WMVCADS2023.Models
 
         [Required(ErrorMessage = "Campo monitor é obrigatório.")]
         [StringLength(30)]
-        [Display(Name = "Monitor")]
+        [Display(Name = "Instrutor")]
         public string monitor { get; set; }
 
         [Required(ErrorMessage = "Campo equipamentos é obrigatório.")]
@@ -30,7 +31,6 @@ namespace WMVCADS2023.Models
 
         [Required(ErrorMessage = "Campo situação é obrigatório.")]
         [Display(Name = "Situação")]
-        public int situacao { get; set; }
-        
+        public Situacao situacao { get; set; }
     }
 }

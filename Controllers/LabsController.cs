@@ -22,6 +22,24 @@ namespace WMVCADS2023.Controllers
                 return View(await _context.Salas.ToListAsync());  
         }
 
+      
+        public IActionResult Create (){
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("id,descricao,monitor,equipamentos,situacao")] Sala sala)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(sala);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(sala);
+        }
 
     }
 }

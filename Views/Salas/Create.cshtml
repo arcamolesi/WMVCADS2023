@@ -1,11 +1,11 @@
 ﻿@model WMVCADS2023.Models.Sala
 
 @{
-    ViewData["Title"] = "Adicionar Salas";
+    ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create Salas</h1>
+<h1>Create</h1>
 
 <h4>Sala</h4>
 <hr />
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="situacao" class="control-label"></label>
-                <input asp-for="situacao" class="form-control" />
+                <select asp-for="situacao" asp-items="ViewBag.status"  class="form-control"></select>
                 <span asp-validation-for="situacao" class="text-danger"></span>
             </div>
             <div class="form-group">
