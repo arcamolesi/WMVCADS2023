@@ -53,8 +53,8 @@ namespace WMVCADS2023.Controllers
                      Value = e.ToString(),
                      Text = e.ToString()
                  });
-            ViewBag.status = status;
-
+            ViewBag.status = status; 
+            
             return View();
         }
 

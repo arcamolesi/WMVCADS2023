@@ -1,0 +1,48 @@
+﻿@model WMVCADS2023.Models.Sala
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Editar Sala</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="descricao" class="control-label"></label>
+                <input asp-for="descricao" class="form-control" />
+                <span asp-validation-for="descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="monitor" class="control-label"></label>
+                <input asp-for="monitor" class="form-control" />
+                <span asp-validation-for="monitor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="equipamentos" class="control-label"></label>
+                <input asp-for="equipamentos" class="form-control" />
+                <span asp-validation-for="equipamentos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="situacao" class="control-label"></label>
+                <select asp-for="situacao" asp-items="ViewBag.status"  class="form-control"></select>
+                <span asp-validation-for="situacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Gravar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar Página Index</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

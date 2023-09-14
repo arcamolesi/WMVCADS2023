@@ -1,0 +1,42 @@
+﻿@model WMVCADS2023.Models.Sala
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4>Detalhes de Salas</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.monitor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.monitor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.equipamentos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.equipamentos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.situacao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.situacao)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id">Editar</a> |
+    <a asp-action="Index">Página Index Labs</a>
+</div>

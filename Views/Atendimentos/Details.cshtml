@@ -1,0 +1,37 @@
+﻿@model WMVCADS2023.Models.Atendimento
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Atendimento</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.aluno)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.aluno.email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sala)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sala.descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.data)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.data)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
