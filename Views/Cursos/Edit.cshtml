@@ -7,7 +7,7 @@
 
 <h1>Edit</h1>
 
-<h4>Curso</h4>
+<h4>Cursos</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,15 +19,16 @@
                 <input asp-for="descricao" class="form-control" />
                 <span asp-validation-for="descricao" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Gravar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Listar Cursos</a>
 </div>
 
 @section Scripts {

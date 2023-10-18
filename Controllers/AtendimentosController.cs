@@ -21,7 +21,7 @@ namespace WMVCADS2023.Controllers
         // GET: Atendimentos
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.Atendimentos.Include(a => a.aluno).Include(a => a.sala);
+            var contexto = _context.Atendimentos.Include(aln => aln.aluno).Include(sl => sl.sala).Include(c=>c.aluno.curso);
             return View(await contexto.ToListAsync());
         }
 
@@ -48,7 +48,7 @@ namespace WMVCADS2023.Controllers
         // GET: Atendimentos/Create
         public IActionResult Create()
         {
-            ViewData["alunoID"] = new SelectList(_context.Alunos, "id", "email");
+            ViewData["alunoID"] = new SelectList(_context.Alunos, "id", "nome");
             ViewData["salaID"] = new SelectList(_context.Salas, "id", "descricao");
             return View();
         }
@@ -66,7 +66,7 @@ namespace WMVCADS2023.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["alunoID"] = new SelectList(_context.Alunos, "id", "email", atendimento.alunoID);
+            ViewData["alunoID"] = new SelectList(_context.Alunos, "id", "nome", atendimento.alunoID);
             ViewData["salaID"] = new SelectList(_context.Salas, "id", "descricao", atendimento.salaID);
             return View(atendimento);
         }

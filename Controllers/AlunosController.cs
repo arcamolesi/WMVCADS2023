@@ -21,7 +21,7 @@ namespace WMVCADS2023.Controllers
         // GET: Alunos
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.Alunos.Include(a => a.curso);
+            var contexto = _context.Alunos.Include(a => a.curso);            
             return View(await contexto.ToListAsync());
         }
 
@@ -70,6 +70,7 @@ namespace WMVCADS2023.Controllers
         }
 
         // GET: Alunos/Edit/5
+      //  [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Alunos == null)
